@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="student" class="entity.Student">
+        <property name="id" value="1" />
+        <property name="name" value="张三" />
+        <property name="age" value="22" />
+
+    </bean>
+
+    <bean id="address" class="entity.Address">
+        <property name="id" value="1"/>
+        <property name="address" value="清华路"/>
+    </bean>
+    <bean id="address2" class="entity.Address">
+        <property name="id" value="2"/>
+        <property name="address" value="北大路"/>
+    </bean>
+    <bean id="person" class="entity.Person" scope="singleton">
+        <property name="id" value="1"/>
+        <property name="username" value="张三"/>
+        <property name="age" value="22"/>
+        <property name="address" ref="address"/>
+    </bean>
+
+    <bean id="student2" class="entity.Student" >
+        <constructor-arg name="id" value="2"></constructor-arg>
+        <constructor-arg name="name" value="里斯"></constructor-arg>
+        <constructor-arg name="age" value="21"></constructor-arg>
+    </bean>
+    <bean id="person2" class="entity.Person">
+        <property name="id" value="2"/>
+        <property name="username" value="王五"/>
+        <property name="age" value="20"/>
+        <property name="address">
+            <list>
+                <ref bean="address"></ref>
+                <ref bean="address2"></ref>
+            </list>
+        </property>
+    </bean>
+
+</beans>
